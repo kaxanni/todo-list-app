@@ -1,14 +1,11 @@
 import express from "express";
- 
 const app = express();
+import todosRouter from "./routes/todos.js";
  
-// define the port
-const port = 3000;
+const port = 4000;
+app.use(express.json());
+app.use("/api", todosRouter);
  
-app.get("/", (req, res) => {
-  res.send("Hello Todo App!!!");
-});
- 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+app.listen(port, () => {
+  console.log(`Listening to port ${port}`);
 });
